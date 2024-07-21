@@ -1,0 +1,350 @@
+{
+	"info": {
+		"_postman_id": "f1b868fb-7f8a-43ee-9703-e009b0b5eb76",
+		"name": "Food Order Delivery System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "21228226"
+	},
+	"item": [
+		{
+			"name": "customer",
+			"item": [
+				{
+					"name": "create customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"John\",\r\n    \"lastName\": \"Doe\",\r\n    \"phoneNumber\": \"1234567890\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"address\": {\r\n        \"streetNumber\": 10,\r\n        \"street\": \"Ibrahim eldesouky\",\r\n        \"city\": \"Cairo\",\r\n        \"country\": \"Egypt\"\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/customers"
+					},
+					"response": []
+				},
+				{
+					"name": "read customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/customers/4"
+					},
+					"response": []
+				},
+				{
+					"name": "update customer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"abdo\",\r\n    \"lastName\": \"hussien\",\r\n    \"phoneNumber\": \"01164462144\",\r\n    \"email\": \"abdo@gmail.com\",\r\n    \"address\": {\r\n        \"streetNumber\": 70,\r\n        \"street\": \"alzahraa\",\r\n        \"city\": \"Cairo\",\r\n        \"country\": \"Egypt\"\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/customers/3"
+					},
+					"response": []
+				},
+				{
+					"name": "delete customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/customers/4"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "restaurant",
+			"item": [
+				{
+					"name": "create restaurant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"restaurantName\" : \"kbda alshr2awy\",\r\n        \"address\" : {\r\n             \"streetNumber\":96,\r\n             \"street\": \"Abdo Basha\",\r\n             \"city\":\"Cairo\",\r\n             \"country\":\"Egypt\"\r\n        },\r\n        \"phoneNumber\" : \"01166114321\",\r\n        \"email\" : \"FoodCorner@gmail.com\",\r\n\r\n        \"description\": \"Crepe, Waffle, Sandwatches\",\r\n        \"cuisine\":\"Egyptian , italian\",\r\n        \"workingHours\":\"Everyday: 10AM-3Am\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/restaurants"
+					},
+					"response": []
+				},
+				{
+					"name": "read single restaurant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/restaurants/2"
+					},
+					"response": []
+				},
+				{
+					"name": "delete single restaurant",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/restaurants/3"
+					},
+					"response": []
+				},
+				{
+					"name": "read a restaurant menu",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/restaurants/1/menu?pageNumber=1&pageSize=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"restaurants",
+								"1",
+								"menu"
+							],
+							"query": [
+								{
+									"key": "pageNumber",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update restaurant",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"restaurantName\" : \"kbda wa mokh alshr2awy\",\r\n        \"address\" : {\r\n             \"streetNumber\":96,\r\n             \"street\": \"Abdo Basha\",\r\n             \"city\":\"Cairo\",\r\n             \"country\":\"Egypt\"\r\n        },\r\n        \"phoneNumber\" : \"01166114321\",\r\n        \"email\" : \"FoodCorner@gmail.com\",\r\n\r\n        \"description\": \"Crepe, Waffle, Sandwatches\",\r\n        \"cuisine\":\"Egyptian , italian\",\r\n        \"workingHours\":\"Everyday: 10AM-3Am\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/restaurants/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Menu Item",
+			"item": [
+				{
+					"name": "create menu item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"itemName\": \"kbda wa mokh w burger\",\r\n    \"description\": \"Juicy grilled beef patty with lettuce, tomato, and cheese.\",\r\n    \"ingredients\": \"beef patty, lettuce, tomato, cheese, bun, mayo, ketchup\",\r\n    \"price\": 190.00,\r\n    \"category\": \"Burger\",\r\n    \"isAvailable\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/restaurants/2/menu"
+					},
+					"response": []
+				},
+				{
+					"name": "read single menu item",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/restaurants/1/menu/6"
+					},
+					"response": []
+				},
+				{
+					"name": "update menu item",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"itemName\": \"Chicken Pizza\",\r\n    \"description\": \"Classic pizza with fresh mozzarella, tomatoes, and basil.\",\r\n    \"ingredients\": \"mozzarella, tomatoes, basil, olive oil, salt\",\r\n    \"price\": 170,\r\n    \"category\": \"Pizza\",\r\n    \"isAvailable\": true\r\n    }\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/restaurants/1/menu/1"
+					},
+					"response": []
+				},
+				{
+					"name": "delete menu item",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/restaurants/1/menu/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cart",
+			"item": [
+				{
+					"name": "get cart by user id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/customers/7/cart"
+					},
+					"response": []
+				},
+				{
+					"name": "add menu item to the cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"quantity\": 1,\r\n  \"specialInstructions\": \"catchup with many gralic\",\r\n  \"menuItemId\": 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/customers/7/cart"
+					},
+					"response": []
+				},
+				{
+					"name": "remove item from cart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/customers/7/cart/40"
+					},
+					"response": []
+				},
+				{
+					"name": "clear cart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/customers/7/cart"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "create order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"customerId\": 7,\r\n  \"restaurantId\": 2,\r\n  \"contactPhone\": \"1234567890\",\r\n  \"deliveryAddress\": {\r\n    \"streetNumber\": 123 ,\r\n    \"street\": \"Ahmed Saied\",\r\n    \"city\": \"cairo\",\r\n    \"country\": \"egypt\"\r\n  },\r\n  \"orderItems\": [\r\n    {\r\n      \"menuItemId\": 6,\r\n      \"quantity\": 2,\r\n      \"specialInstructions\": \"Extra cheese\"\r\n    },\r\n    {\r\n      \"menuItemId\": 4,\r\n      \"quantity\": 1,\r\n      \"specialInstructions\": \"No onions\"\r\n    }\r\n  ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/orders"
+					},
+					"response": []
+				},
+				{
+					"name": "read order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/orders/customer/7"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "reviews",
+			"item": [
+				{
+					"name": "create review",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rate\": 3,\r\n    \"review\": \"Great taste with catchup sauce\",\r\n    \"customerId\": 7,\r\n    \"menuItemId\": 6\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/item-reviews"
+					},
+					"response": []
+				},
+				{
+					"name": "delete review",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/item-reviews/4"
+					},
+					"response": []
+				},
+				{
+					"name": "update review",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rate\": 1,\r\n    \"review\": \"very bad\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/item-reviews/5"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
