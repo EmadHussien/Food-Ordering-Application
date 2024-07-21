@@ -25,7 +25,7 @@ This system is designed to help customers order food online from multiple restau
 ### Technologies Used
 <b>Spring Boot</b>: The backend framework used.
 
-<b>H2 MySQL</b>: The relational database system used for persisting data.
+<b>MySQL</b>: The relational database system used for persisting data.
 
 
 <b>JPA Entities</b>: Used for object-relational mapping.
