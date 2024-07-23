@@ -4,6 +4,8 @@ import com.FoodOrderingApp.foodorder.address.Address;
 import com.FoodOrderingApp.foodorder.menuitem.MenuItem;
 import com.FoodOrderingApp.foodorder.order.Order;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,11 +27,14 @@ public class Restaurant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "restaurant_name")
+    @NotBlank(message = "Restaurant name is mandatory")
     private String restaurantName;
 
     @Column(name = "address")
     @Embedded
     private Address address;
+    @Size(min = 11,message = "Phone number must be at least 11 numbers")
+    @NotBlank(message = "Phone number is mandatory")
     @Column(name = "phone_number")
     private String phoneNumber;
     @Column(name = "email")

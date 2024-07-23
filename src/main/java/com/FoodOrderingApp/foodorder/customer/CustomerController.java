@@ -5,6 +5,7 @@ import com.FoodOrderingApp.foodorder.cart.Cart;
 import com.FoodOrderingApp.foodorder.cart.CartService;
 import com.FoodOrderingApp.foodorder.cartitem.CartItem;
 import com.FoodOrderingApp.foodorder.restaurant.Restaurant;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +23,7 @@ public class CustomerController {
     }
 
     @PostMapping("/customers")
-    public Customer createCustomer(@RequestBody Customer theCustomer) {
+    public Customer createCustomer(@Valid @RequestBody Customer theCustomer) {
         System.out.println(theCustomer);
         return customerService.createCustomer(theCustomer);
     }

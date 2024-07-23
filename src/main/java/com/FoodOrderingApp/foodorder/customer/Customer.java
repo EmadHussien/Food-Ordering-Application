@@ -7,6 +7,9 @@ import com.FoodOrderingApp.foodorder.order.Order;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -33,8 +36,11 @@ public class Customer {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
+    @Size(min = 11 , message = "Must be at least 11 numbers")
     @Column(name = "phone_number")
     private String phoneNumber;
+    @Email(message = "Must be email like: example@example.com")
+    @NotBlank(message = "Email is mandatory")
     @Column(name = "email")
     private String email;
     @Column(name = "address")

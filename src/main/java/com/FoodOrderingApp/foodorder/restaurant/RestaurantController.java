@@ -2,6 +2,7 @@ package com.FoodOrderingApp.foodorder.restaurant;
 
 import com.FoodOrderingApp.foodorder.DTO.PaginatedMenuResponse;
 import com.FoodOrderingApp.foodorder.menuitem.MenuItem;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,7 @@ public class RestaurantController {
     }
 
     @PostMapping("/restaurants")
-    public Restaurant createRestaurant(@RequestBody Restaurant theRestaurant)
+    public Restaurant createRestaurant(@Valid @RequestBody Restaurant theRestaurant)
     {
         return restaurantService.createRestaurant(theRestaurant);
     }
