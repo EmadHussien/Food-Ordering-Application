@@ -22,6 +22,13 @@ This system is designed to help customers order food online from multiple restau
 
    - Customers can write reviews for specific menu items.
 
+ - Implemented validation and global exception handling to enhance system reliability and user experience.
+
+ - Used Mockito for unit testing to ensure the robustness and reliability of the service and controller layers.
+
+
+
+
 ### Technologies Used
 <b>Spring Boot</b>: The backend framework used.
 
@@ -31,6 +38,8 @@ This system is designed to help customers order food online from multiple restau
 <b>JPA Entities</b>: Used for object-relational mapping.
 
 <b>REST APIs</b>: Used for effective communication between frontend and backend.
+
+<b>Mockito</b>: A mocking framework used for unit testing ensuring robust testing of the service and controller layers.
 
 
 ### ERD Diagram
