@@ -52,9 +52,14 @@ This system is designed to help customers order food online from multiple restau
 
 
 
-### ERD Diagram
+### ERD
 
 ![ERD](https://github.com/user-attachments/assets/2b64cf61-21d1-4d6b-8ab5-293ec4430284)
+
+<hr/>
+
+### Database Schema
+![Database Schema](https://github.com/user-attachments/assets/e404fd4c-dedd-448e-9e74-f836db5b5eb1)
 
 
 ### API Documentation
