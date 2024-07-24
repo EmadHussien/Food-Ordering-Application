@@ -54,7 +54,7 @@ This system is designed to help customers order food online from multiple restau
 
 ### ERD
 
-![ERD](https://github.com/user-attachments/assets/2b64cf61-21d1-4d6b-8ab5-293ec4430284)
+![ERD](https://github.com/user-attachments/assets/53fe47c4-122a-4ee0-8200-94602cdf12a9)
 
 <hr/>
 
