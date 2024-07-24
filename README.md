@@ -22,11 +22,18 @@ This system is designed to help customers order food online from multiple restau
 
    - Customers can write reviews for specific menu items.
 
- - Implemented validation and global exception handling to enhance system reliability and user experience.
 
- - Used Mockito for unit testing to ensure the robustness and reliability of the service and controller layers.
+- Payment Processing:
 
+   - Integrated Stripe for secure and efficient payment processing.
 
+   - Supports various payment methods including credit/debit cards.
+
+- System Reliability:
+
+    - Implemented validation and global exception handling to enhance system reliability and user experience.
+
+    - Used Mockito for unit testing to ensure the robustness and reliability of the service and controller layers.
 
 
 ### Technologies Used
@@ -40,6 +47,9 @@ This system is designed to help customers order food online from multiple restau
 <b>REST APIs</b>: Used for effective communication between frontend and backend.
 
 <b>Mockito</b>: A mocking framework used for unit testing ensuring robust testing of the service and controller layers.
+
+<b>Stripe</b>: Payment processing platform used for handling online payments securely.
+
 
 
 ### ERD Diagram
