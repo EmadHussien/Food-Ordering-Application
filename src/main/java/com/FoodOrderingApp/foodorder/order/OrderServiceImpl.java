@@ -10,9 +10,13 @@ import com.FoodOrderingApp.foodorder.customer.CustomerService;
 import com.FoodOrderingApp.foodorder.menuitem.MenuItem;
 import com.FoodOrderingApp.foodorder.menuitem.MenuItemService;
 import com.FoodOrderingApp.foodorder.orderitem.OrderItem;
+import com.FoodOrderingApp.foodorder.payment.Payment;
+import com.FoodOrderingApp.foodorder.payment.PaymentService;
 import com.FoodOrderingApp.foodorder.restaurant.Restaurant;
 import com.FoodOrderingApp.foodorder.restaurant.RestaurantService;
+import com.stripe.model.Charge;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,12 +30,16 @@ public class OrderServiceImpl implements OrderService {
     private RestaurantService restaurantService;
     private MenuItemService menuItemService;
 
+    private PaymentService paymentService;
+
+
     @Autowired
-    public OrderServiceImpl(MenuItemService menuItemService,OrderDAO orderDAO, CustomerService customerService, RestaurantService restaurantService) {
+    public OrderServiceImpl(MenuItemService menuItemService,OrderDAO orderDAO, CustomerService customerService, RestaurantService restaurantService, PaymentService paymentService) {
         this.orderDAO = orderDAO;
         this.customerService = customerService;
         this.restaurantService = restaurantService;
         this.menuItemService = menuItemService;
+        this.paymentService = paymentService;
     }
     private List<OrderItem> mapToOrderItemList(List<OrderItemDTO> orderItemDTOs, Order order) {
         return orderItemDTOs.stream().map(dto -> {
@@ -47,7 +55,24 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
-    public Order createOrder(OrderRequestDTO theOrder) {
+    public Order createOrder(OrderRequestDTO theOrder, String token, String currency) throws Exception {
+//        Customer: Places an order for food items.
+//
+//        System: Calculates the total cost and presents payment options.
+//
+//        Customer: Selects a payment method and enters payment details.
+//
+//        System: Sends payment details to the payment gateway.
+//
+//        Payment Gateway: Processes the payment and returns a confirmation.
+//
+//        System: Confirms the order and sends it to the kitchen.
+//
+//        Kitchen: Prepares the order.
+//        Delivery: Delivers the order to the customer.
+//
+//        Customer: Receives the order and the digital receipt.
+
         Order order = new Order(theOrder.getContactPhone(),theOrder.getDeliveryAddress());
         // converting the orderItems from dto to objects
         List<OrderItem> orderItems =
@@ -61,6 +86,19 @@ public class OrderServiceImpl implements OrderService {
         restaurant.addOrder(order);
 
         order.updateOrderDetails();
+
+        Charge paymentInfo = paymentService.processPayment(order.getTotalAmount().longValue(),currency,token ,customer);
+        // creating payment object record
+        Payment payment = new Payment(
+                paymentInfo.getPaymentMethod(),paymentInfo.getId(),
+                (paymentInfo.getAmount()/100), Payment.PaymentStatus.COMPLETED,
+                paymentInfo.getReceiptUrl()
+                );
+
+        // setting up the relations
+        customer.addPayments(payment);
+        payment.setOrder(order);
+        order.setPayment(payment);
         return orderDAO.save(order);
     }
 

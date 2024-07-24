@@ -6,6 +6,6 @@ import com.FoodOrderingApp.foodorder.DTO.OrderResponseDTO;
 import java.util.List;
 
 public interface OrderService {
-    Order createOrder(OrderRequestDTO theOrder);
+    Order createOrder(OrderRequestDTO theOrder, String token,String currency) throws Exception;
     List<OrderResponseDTO> readOrder(Long OrderId);
 }

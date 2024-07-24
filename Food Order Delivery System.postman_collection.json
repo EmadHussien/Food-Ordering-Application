@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"firstName\": \"John\",\r\n    \"lastName\": \"Doe\",\r\n    \"phoneNumber\": \"1234567890\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"address\": {\r\n        \"streetNumber\": 10,\r\n        \"street\": \"Ibrahim eldesouky\",\r\n        \"city\": \"Cairo\",\r\n        \"country\": \"Egypt\"\r\n    }\r\n}\r\n",
+							"raw": "{\r\n    \"firstName\": \"John\",\r\n    \"lastName\": \"Doe\",\r\n    \"phoneNumber\": \"0123456780\",\r\n    \"email\": \"emad@gmail.com\",\r\n    \"address\": {\r\n        \"streetNumber\": 10,\r\n        \"street\": \"Ibrahim eldesouky\",\r\n        \"city\": \"Cairo\",\r\n        \"country\": \"Egypt\"\r\n    }\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -281,7 +281,27 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/orders"
+						"url": {
+							"raw": "http://localhost:8080/orders?token=tok_visa&currency=egp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orders"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "tok_visa"
+								},
+								{
+									"key": "currency",
+									"value": "egp"
+								}
+							]
+						}
 					},
 					"response": []
 				},

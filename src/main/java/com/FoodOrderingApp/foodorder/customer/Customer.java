@@ -4,6 +4,7 @@ import com.FoodOrderingApp.foodorder.address.Address;
 import com.FoodOrderingApp.foodorder.cart.Cart;
 import com.FoodOrderingApp.foodorder.itemreview.ItemReview;
 import com.FoodOrderingApp.foodorder.order.Order;
+import com.FoodOrderingApp.foodorder.payment.Payment;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -61,6 +62,9 @@ public class Customer {
     @OneToMany(mappedBy = "customer" , fetch = FetchType.LAZY , cascade = CascadeType.ALL)
     private List<Order> orders;
 
+    @OneToMany(mappedBy = "customer",fetch= FetchType.LAZY , cascade = CascadeType.ALL)
+    private List<Payment> payments;
+
     public void addOrder(Order order) {
         if(orders == null)
         {
@@ -79,6 +83,18 @@ public class Customer {
         customerReviews.add(itemReview);
         itemReview.setCustomer(this);
     }
+
+
+    public void addPayments(Payment thePayment)
+    {
+        if(payments == null)
+        {
+            payments = new ArrayList<Payment>();
+        }
+        payments.add(thePayment);
+        thePayment.setCustomer(this);
+    }
+
 
 
 

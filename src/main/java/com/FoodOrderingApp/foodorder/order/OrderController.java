@@ -17,9 +17,11 @@ public class OrderController {
     }
 
     @PostMapping("/orders")
-    public Order createOrder(@RequestBody OrderRequestDTO orderRequestDTO)
-    {
-        return orderService.createOrder(orderRequestDTO);
+    public Order createOrder(@RequestParam String token ,
+                             @RequestParam(defaultValue = "usd") String currency
+                            , @RequestBody OrderRequestDTO orderRequestDTO) throws Exception {
+
+        return orderService.createOrder(orderRequestDTO,token,currency);
     }
     @GetMapping("/orders/customer/{customerId}")
     public List<OrderResponseDTO> readOrder(@PathVariable Long customerId)

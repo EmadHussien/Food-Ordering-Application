@@ -14,7 +14,6 @@ public class FoodorderApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FoodorderApplication.class, args);
 		System.out.println("Hello World....");
-
 	}
 
 }

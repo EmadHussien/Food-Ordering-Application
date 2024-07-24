@@ -6,6 +6,7 @@ import com.FoodOrderingApp.foodorder.address.Address;
 import com.FoodOrderingApp.foodorder.cartitem.CartItem;
 import com.FoodOrderingApp.foodorder.customer.Customer;
 import com.FoodOrderingApp.foodorder.orderitem.OrderItem;
+import com.FoodOrderingApp.foodorder.payment.Payment;
 import com.FoodOrderingApp.foodorder.restaurant.Restaurant;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -71,6 +72,10 @@ public class Order {
     @JsonIgnore
     private List<OrderItem> orderItemList;
 
+    @OneToOne(mappedBy = "order" ,cascade = {
+            CascadeType.DETACH , CascadeType.MERGE , CascadeType.PERSIST , CascadeType.REFRESH
+    })
+    private Payment payment;
 
     public Order(String contactPhone, Address deliveryAddress) {
         this.quantity = 0;
