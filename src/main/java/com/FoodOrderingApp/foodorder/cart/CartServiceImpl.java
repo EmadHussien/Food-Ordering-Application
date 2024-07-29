@@ -1,4 +1,5 @@
 package com.FoodOrderingApp.foodorder.cart;
+import com.FoodOrderingApp.foodorder.helperclasses.CheckingOwnership;
 import com.FoodOrderingApp.foodorder.DTO.CartItemDTO;import com.FoodOrderingApp.foodorder.DTO.MenuItemDTO;
 import com.FoodOrderingApp.foodorder.cartitem.CartItem;
 import com.FoodOrderingApp.foodorder.cartitem.CartItemService;
@@ -6,8 +7,9 @@ import com.FoodOrderingApp.foodorder.customer.Customer;
 import com.FoodOrderingApp.foodorder.customer.CustomerService;import com.FoodOrderingApp.foodorder.menuitem.MenuItem;
 import com.FoodOrderingApp.foodorder.menuitem.MenuItemService;import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;import org.springframework.transaction.annotation.Transactional;
-import java.util.List;
-import java.util.stream.Collectors;
+
+import java.nio.file.AccessDeniedException;
+
 @Service
 public class CartServiceImpl implements CartService{
     private CartDAO cartDAO ;
@@ -31,11 +33,15 @@ public class CartServiceImpl implements CartService{
         }
 
         @Override
-        public Cart getCustomerCart(Long customerId) {
-            Customer customer = customerService.readCustomer(customerId);
-            // Convert CartItems to CartItemDTOs
-            Cart cart = customer.getCart();
-            return convertToMenuItemDTO(cart);
+        public Cart getCustomerCart(Long customerId) throws AccessDeniedException {
+            if(CheckingOwnership.isUserResourceOwner(customerId))
+            {
+                Customer customer = customerService.readCustomer(customerId);
+                // Convert CartItems to CartItemDTOs
+                Cart cart = customer.getCart();
+                return convertToMenuItemDTO(cart);
+            }
+            throw new AccessDeniedException("You do not have permission to access this cart");
         }
         @Override
         @Transactional

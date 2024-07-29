@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.AccessDeniedException;
+
 @RestController
 public class CustomerController {
     private CustomerService customerService;
@@ -48,7 +50,7 @@ public class CustomerController {
     }
 
     @GetMapping("customers/{customerId}/cart")
-    public ResponseEntity<Cart> getCart(@PathVariable Long customerId) {
+    public ResponseEntity<Cart> getCart(@PathVariable Long customerId) throws AccessDeniedException {
         Cart cart = cartService.getCustomerCart(customerId);
         return new ResponseEntity<>(cart, HttpStatus.OK);
     }

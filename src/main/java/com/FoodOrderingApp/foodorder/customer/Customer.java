@@ -42,7 +42,7 @@ public class Customer {
     private String phoneNumber;
     @Email(message = "Must be email like: example@example.com")
     @NotBlank(message = "Email is mandatory")
-    @Column(name = "email")
+    @Column(name = "email",nullable = false , unique = true)
     private String email;
     @Column(name = "address")
     @Embedded
@@ -68,7 +68,7 @@ public class Customer {
     public void addOrder(Order order) {
         if(orders == null)
         {
-            orders = new ArrayList<Order>();
+            orders = new ArrayList< Order>();
         }
         orders.add(order);
         order.setCustomer(this);
