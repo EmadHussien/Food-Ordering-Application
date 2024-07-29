@@ -35,6 +35,15 @@ This system is designed to help customers order food online from multiple restau
 
     - Used Mockito for unit testing to ensure the robustness and reliability of the service and controller layers.
 
+- Security Authentication and Authorization with Keycloak:
+  - Integrated Keycloak for managing user authentication and authorization.
+  - Configured Keycloak to handle OAuth2 and OpenID Connect protocols.
+  - Implemented role-based access control (RBAC) using Keycloak's role management.
+
+- Secure API Endpoints:
+  - Secured RESTful API endpoints to ensure that only authenticated users can access specific resources.
+  - Used Keycloak's token validation to protect endpoints and verify user roles.
+
 
 ### Technologies Used
 <b>Spring Boot</b>: The backend framework used.
@@ -50,7 +59,14 @@ This system is designed to help customers order food online from multiple restau
 
 <b>Stripe</b>: Payment processing platform used for handling online payments securely.
 
+<b>Keycloak</b> for identity and access management.
 
+
+### Security Sequence Diagram
+![Sequence diagram for auth](https://github.com/user-attachments/assets/de407919-908d-4c36-a585-8dc0fa98b920)
+
+
+<hr/>
 
 ### ERD
 
